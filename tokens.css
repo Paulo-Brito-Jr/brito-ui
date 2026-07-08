@@ -1,0 +1,125 @@
+/* ============================================================
+ * @paulo-brito-jr/brito-ui — tokens semânticos da família Brito
+ *
+ * Fonte canônica do design "Geist família" (redesign 2026-04,
+ * pilotado no financas e replicado na agenda).
+ *
+ * Uso (globals.css do app, Tailwind v4):
+ *   @import "tailwindcss";
+ *   @import "@paulo-brito-jr/brito-ui/tokens.css";
+ *
+ * O accent default é o azul-marinho (Finanças). Cada app define a
+ * própria identidade sobrescrevendo --accent* no :root/.dark do seu
+ * globals, ou usando os wrappers .area-* abaixo.
+ * ============================================================ */
+
+/* Tailwind v4 — variantes .dark (class-based) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --app:     #F7F7F8;          /* fundo da página */
+  --surface: #FFFFFF;          /* cards e superfícies elevadas */
+  --soft:    #F0F0F3;          /* inputs, chips, botões secundários */
+  --line:    rgb(0 0 0 / 0.07);/* hairlines, divisórias */
+  --fg:      #0F1115;          /* texto principal */
+  --muted:   #4B5563;          /* texto secundário */
+  --subtle:  #9CA3AF;          /* texto terciário / ícones discretos */
+
+  /* Accent semântico — default azul-marinho; o app sobrescreve. */
+  --accent:        #1E2A56;
+  --accent-soft:   rgb(30 42 86 / 0.08);
+  --accent-fg:     #FFFFFF;
+  --accent-ring:   rgb(30 42 86 / 0.25);
+
+  /* Status financeiro/semafórico da casa */
+  --positive:      #16A34A;
+  --positive-soft: rgb(22 163 74 / 0.10);
+  --negative:      #E26A6A;    /* coral suave — não vermelho-Itaú */
+  --negative-soft: rgb(226 106 106 / 0.10);
+}
+
+.dark {
+  --app:     #0A0A0B;
+  --surface: #161618;
+  --soft:    #232326;
+  --line:    rgb(255 255 255 / 0.08);
+  --fg:      #F4F4F5;
+  --muted:   #A1A1AA;
+  --subtle:  #71717A;
+
+  --accent:        #5B6FD8;
+  --accent-soft:   rgb(91 111 216 / 0.16);
+  --accent-fg:     #FFFFFF;
+  --accent-ring:   rgb(91 111 216 / 0.35);
+
+  --positive:      #4ADE80;
+  --positive-soft: rgb(74 222 128 / 0.12);
+  --negative:      #F87171;
+  --negative-soft: rgb(248 113 113 / 0.12);
+}
+
+/* Wrappers de área — trocam o accent do contêiner pra baixo. */
+.area-finance {
+  --accent:        #1E2A56;
+  --accent-soft:   rgb(30 42 86 / 0.08);
+  --accent-fg:     #FFFFFF;
+  --accent-ring:   rgb(30 42 86 / 0.25);
+}
+.dark .area-finance {
+  --accent:        #5B6FD8;
+  --accent-soft:   rgb(91 111 216 / 0.16);
+  --accent-ring:   rgb(91 111 216 / 0.35);
+}
+.area-agenda {
+  --accent:        #D97706;    /* laranja Maranata-aware */
+  --accent-soft:   rgb(217 119 6 / 0.10);
+  --accent-fg:     #FFFFFF;
+  --accent-ring:   rgb(217 119 6 / 0.30);
+}
+.dark .area-agenda {
+  --accent:        #F2A744;
+  --accent-soft:   rgb(242 167 68 / 0.16);
+  --accent-fg:     #1A0F00;
+  --accent-ring:   rgb(242 167 68 / 0.35);
+}
+
+@theme inline {
+  --color-app:     var(--app);
+  --color-surface: var(--surface);
+  --color-soft:    var(--soft);
+  --color-line:    var(--line);
+  --color-fg:      var(--fg);
+  --color-muted:   var(--muted);
+  --color-subtle:  var(--subtle);
+
+  --color-accent:        var(--accent);
+  --color-accent-soft:   var(--accent-soft);
+  --color-accent-fg:     var(--accent-fg);
+  --color-accent-ring:   var(--accent-ring);
+
+  --color-positive:      var(--positive);
+  --color-positive-soft: var(--positive-soft);
+  --color-negative:      var(--negative);
+  --color-negative-soft: var(--negative-soft);
+
+  --font-sans: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, monospace);
+}
+
+html, body {
+  background: var(--app);
+  color: var(--fg);
+}
+
+/* Números financeiros — alinhamento tabular */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Oculta scrollbar em listas horizontais (avatares, segmented) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Controles nativos herdam o tema */
+input, select, textarea, button { color-scheme: light; }
+.dark input, .dark select, .dark textarea, .dark button { color-scheme: dark; }

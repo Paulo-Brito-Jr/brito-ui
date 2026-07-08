@@ -1,0 +1,47 @@
+{
+  "name": "@paulo-brito-jr/brito-ui",
+  "version": "0.1.0",
+  "description": "Design system da família Brito — tokens semânticos (Tailwind v4 @theme), tema light/dark (toggle + script anti-flash) e constantes de classe canônicas. Extraído do redesign Geist (financas/agenda, 2026-04).",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist/**",
+    "tokens.css",
+    "README.md"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js"
+    },
+    "./design": {
+      "types": "./dist/design.d.ts",
+      "import": "./dist/design.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo '⚠️  eslint não configurado neste pacote ainda' && exit 0",
+    "lint:strict": "echo '⚠️  eslint não configurado neste pacote ainda' && exit 0",
+    "prepare": "git config core.hooksPath .githooks || true",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulo-Brito-Jr/brito-ui.git"
+  },
+  "homepage": "https://github.com/Paulo-Brito-Jr/brito-ui",
+  "peerDependencies": {
+    "react": ">=18 <20"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}
