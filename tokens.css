@@ -13,8 +13,9 @@
  * globals, ou usando os wrappers .area-* abaixo.
  * ============================================================ */
 
-/* Tailwind v4 — variantes .dark (class-based) */
-@custom-variant dark (&:where(.dark, .dark *));
+/* Este arquivo é ADITIVO e seguro pra qualquer app (só define vars, @theme,
+   áreas e utilitários — não estiliza html/body nem cria variants).
+   Apps no design Geist importam TAMBÉM o base.css (html/body + dark variant). */
 
 :root {
   --app:     #F7F7F8;          /* fundo da página */
@@ -106,11 +107,6 @@
   --font-mono: var(--font-geist-mono, ui-monospace, SFMono-Regular, monospace);
 }
 
-html, body {
-  background: var(--app);
-  color: var(--fg);
-}
-
 /* Números financeiros — alinhamento tabular */
 .tabular {
   font-variant-numeric: tabular-nums;
@@ -119,7 +115,3 @@ html, body {
 /* Oculta scrollbar em listas horizontais (avatares, segmented) */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* Controles nativos herdam o tema */
-input, select, textarea, button { color-scheme: light; }
-.dark input, .dark select, .dark textarea, .dark button { color-scheme: dark; }

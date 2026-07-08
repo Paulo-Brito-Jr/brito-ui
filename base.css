@@ -1,0 +1,23 @@
+/* ============================================================
+ * @paulo-brito-jr/brito-ui — base do design Geist família
+ *
+ * Só pra apps que VIVEM neste design (financas, agenda, futuros
+ * redesenhados): estiliza html/body com os tokens e ativa a
+ * variante .dark. Apps com design próprio importam apenas o
+ * tokens.css (aditivo) e mantêm a base deles.
+ *
+ * Uso: @import "@paulo-brito-jr/brito-ui/tokens.css";
+ *      @import "@paulo-brito-jr/brito-ui/base.css";
+ * ============================================================ */
+
+/* Tailwind v4 — variantes .dark (class-based) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+html, body {
+  background: var(--app);
+  color: var(--fg);
+}
+
+/* Controles nativos herdam o tema */
+input, select, textarea, button { color-scheme: light; }
+.dark input, .dark select, .dark textarea, .dark button { color-scheme: dark; }
