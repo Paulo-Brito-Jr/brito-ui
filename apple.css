@@ -1,0 +1,93 @@
+/* ============================================================
+ * @paulo-brito-jr/brito-ui — tema "padrão Apple" (opcional)
+ *
+ * Remapeia os tokens semânticos da família (--app, --surface, --soft,
+ * --line, --fg, --muted, --subtle, --accent*, --positive*, --negative*)
+ * para os valores do Human Interface Guidelines (cap. 9 do manual
+ * design-apple da Skynet, set/2026): fundo agrupado, card branco, um
+ * acento azul do sistema, cores de status do sistema, SF Pro.
+ *
+ * Uso (depois do tokens.css; base.css opcional):
+ *   @import "@paulo-brito-jr/brito-ui/tokens.css";
+ *   @import "@paulo-brito-jr/brito-ui/apple.css";
+ *
+ * É ADITIVO: só redefine variáveis. A identidade do app continua sendo
+ * sobrescrever --accent* no globals dele (mas um acento só por app).
+ * Piloto: Skynet (skynet.britos.app), 26–27/set/2026.
+ * ============================================================ */
+
+:root {
+  --app:     #F2F2F7;                 /* systemGroupedBackground */
+  --surface: #FFFFFF;                 /* secondarySystemGroupedBackground (card) */
+  --soft:    rgb(120 120 128 / 0.12); /* tertiarySystemFill: campos, chips, botão gray */
+  --line:    rgb(60 60 67 / 0.29);    /* separator (0.5px em @2x) */
+  --fg:      #000000;                 /* label */
+  --muted:   #6E6E73;                 /* secundário com 4,9:1 sobre branco */
+  --subtle:  rgb(60 60 67 / 0.30);    /* tertiaryLabel (só decorativo) */
+
+  --accent:        #0088FF;           /* systemBlue */
+  --accent-soft:   rgb(0 136 255 / 0.14);
+  --accent-fg:     #FFFFFF;
+  --accent-ring:   rgb(0 136 255 / 0.35);
+
+  --positive:      #34C759;           /* systemGreen */
+  --positive-soft: rgb(52 199 89 / 0.16);
+  --negative:      #FF383C;           /* systemRed */
+  --negative-soft: rgb(255 56 60 / 0.16);
+
+  /* Extras Apple que a família não tinha */
+  --warning:       #FF8D28;           /* systemOrange */
+  --warning-soft:  rgb(255 141 40 / 0.16);
+  --glass:         rgb(255 255 255 / 0.62);
+  --radius-s: 8px; --radius-m: 12px; --radius-l: 16px; --radius-xl: 26px;
+  --tap: 44px;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+               system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.dark {
+  --app:     #000000;
+  --surface: #1C1C1E;
+  --soft:    rgb(118 118 128 / 0.24);
+  --line:    rgb(84 84 88 / 0.60);
+  --fg:      #FFFFFF;
+  --muted:   #9E9EA3;                 /* 7:1 sobre preto */
+  --subtle:  rgb(235 235 245 / 0.30);
+
+  --accent:        #0091FF;
+  --accent-soft:   rgb(0 145 255 / 0.16);
+  --accent-fg:     #FFFFFF;
+  --accent-ring:   rgb(0 145 255 / 0.40);
+
+  --positive:      #30D158;
+  --positive-soft: rgb(48 209 88 / 0.18);
+  --negative:      #FF4245;
+  --negative-soft: rgb(255 66 69 / 0.18);
+  --warning:       #FF9230;
+  --warning-soft:  rgb(255 146 48 / 0.18);
+  --glass:         rgb(28 28 30 / 0.62);
+}
+
+/* Liquid Glass: só em barras, tab bars, popovers e sheets — nunca em cards. */
+.apple-glass {
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 0 0 0.5px var(--line);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .apple-glass { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--surface); }
+}
+
+/* Card no padrão: hairline por sombra, sem borda de 1px, raio contínuo. */
+.apple-card {
+  background: var(--surface);
+  border-radius: var(--radius-m);
+  box-shadow: 0 0 0 0.5px var(--line);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apple-card, .apple-glass { transition: none; }
+}
