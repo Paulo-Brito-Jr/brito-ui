@@ -1,6 +1,6 @@
 {
   "name": "@paulo-brito-jr/brito-ui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Design system da família Brito — tokens semânticos (Tailwind v4 @theme), tema light/dark (toggle + script anti-flash) e constantes de classe canônicas. Extraído do redesign Geist (financas/agenda, 2026-04).",
   "license": "MIT",
   "type": "module",
@@ -12,6 +12,7 @@
   ],
   "exports": {
     "./tokens.css": "./tokens.css",
+    "./apple.css": "./apple.css",
     "./theme": {
       "types": "./dist/theme.d.ts",
       "import": "./dist/theme.js"

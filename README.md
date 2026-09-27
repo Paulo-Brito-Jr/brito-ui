@@ -37,6 +37,23 @@ import { THEME_INIT_SCRIPT } from "@paulo-brito-jr/brito-ui/theme";
 
 Toggle (menu/nav): `import { ThemeToggle } from "@paulo-brito-jr/brito-ui/theme";`
 
+## Tema "padrão Apple" (opcional, desde 0.2.0)
+
+`apple.css` remapeia os mesmos tokens para os valores do Human Interface
+Guidelines (fundo agrupado, card branco, um acento azul do sistema, cores de
+status do sistema, SF Pro). É aditivo e opt-in por app:
+
+```css
+@import "tailwindcss";
+@import "@paulo-brito-jr/brito-ui/tokens.css";
+@import "@paulo-brito-jr/brito-ui/apple.css";   /* depois do tokens.css */
+```
+
+Regras que vêm junto (manual `design-apple` da Skynet): um acento por app,
+cor só para status, caixa de frase (nada de `uppercase tracking-wider` em
+rótulo), alvos de 44 px, hairline em vez de borda, vidro (`.apple-glass`) só
+em barras. Piloto em produção: skynet.britos.app (26–27/set/2026).
+
 ## Regras da casa
 
 - Cores de superfície/texto **só** pelas classes semânticas (`bg-surface`, `text-fg`,
